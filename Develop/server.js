@@ -1,5 +1,6 @@
 const express = require("express");
 const { v4: uuidv4 } = require('uuid');
+const path = require('path')
 
 const app = express();
 
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public/')))
 
 require('./routes/html-routes')(app);
 require('./routes/api-routes')(app);
