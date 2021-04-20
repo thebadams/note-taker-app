@@ -1,3 +1,4 @@
+// const { v4: uuidv4 } = require('uuid');
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -50,7 +51,7 @@ const deleteNote = (id) =>
     },
   });
 
-const renderActiveNote = () => {
+const renderActiveNote = (activeNote) => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -71,7 +72,7 @@ const handleNoteSave = () => {
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
-    renderActiveNote();
+    renderActiveNote(activeNote);
   });
 };
 
@@ -89,7 +90,7 @@ const handleNoteDelete = (e) => {
 
   deleteNote(noteId).then(() => {
     getAndRenderNotes();
-    renderActiveNote();
+    renderActiveNote(activeNote);
   });
 };
 
@@ -97,13 +98,14 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
-  renderActiveNote();
+  console.log(activeNote)
+  renderActiveNote(activeNote);
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
-  renderActiveNote();
+  renderActiveNote(activeNote);
 };
 
 const handleRenderSaveBtn = () => {
