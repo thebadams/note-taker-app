@@ -1,8 +1,16 @@
 const db = require('../db/db.json');
+const fs = require('fs');
 const {v4: uuidv4} = require("uuid")
 module.exports = (app) => {
 
-    app.get('/api/notes', (req, res)=>res.json(db));
+    app.get('/api/notes', (req, res)=>{
+        fs.readFile('./db/db.json', 'utf8', (err, db)=>{
+            if(err) throw err;
+            const data = JSON.parse(db);
+            res.send(data)
+
+        });
+    });
 
     app.post('/api/notes', (req, res)=>{
 
