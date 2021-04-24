@@ -14,4 +14,15 @@ module.exports = (app) => {
         db.push(newNote)
         
         return res.json(true)})
+
+    app.delete('/api/notes/:id', (req, res)=>{
+        let ID = req.params.id
+        db.forEach((note, i)=>{
+            if(note.id === ID){
+                db.splice(i, 1);
+            }
+        })
+    })
 }
+
+console.log(uuidv4())
