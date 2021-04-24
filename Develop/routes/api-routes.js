@@ -13,24 +13,45 @@ module.exports = (app) => {
     });
 
     app.post('/api/notes', (req, res)=>{
-
-        let newNote = {
+        fs.readFile('./db/db.json', 'utf8', (err, db)=>{
+            if(err) throw err;
+            const notes = JSON.parse(db);
+            let newNote = {
             title: req.body.title,
             text: req.body.text,
             id: uuidv4()
-        }
-        db.push(newNote)
+            }
+            
+            notes.push(newNote);
+
+            fs.writeFile('./db/db.json', JSON.stringify(notes, null), (err)=>{
+                if(err) throw err;
+                res.send(true)
+            })
+
+        })
+    });
+
+
         
-        return res.json(true)})
+        // db.push(newNote)
+        
 
     app.delete('/api/notes/:id', (req, res)=>{
-        let ID = req.params.id
-        db.forEach((note, i)=>{
-            if(note.id === ID){
-                db.splice(i, 1);
-            }
+        fs.readFile('./db/db.json', 'utf8', (err, data)=>{
+            if(err) throw err;
+            let ID = req.params.id
+            let notes = JSON.parse(data)
+            notes.forEach((note, i)=>{
+                if(note.id === ID){
+                    notes.splice(i,1);
+                }
+            })
+             fs.writeFile('./db/db.json', JSON.stringify(notes, null), (err)=>{
+            if(err) throw err;
+            res.send(true);
+            })
         })
+       
     })
-}
-
-console.log(uuidv4())
+};
