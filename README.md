@@ -1,130 +1,79 @@
-# 11 Express.js: Note Taker
+# Express Note Taker Application
 
-## Your Task
+## Description
+This is a note taking application with its backend built out using express.js.
 
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+## Installation
+To install the application locally
 
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+1. Clone the Repo into your local machine. The Repository can be found [here](https://www.github.com/thebadams/note-taker-app.git)
+1. Run <code>npm install</code> in the same directory as the package.json
+1. This command should install express and enable you to run the server on PORT 8080.
 
+## Usage
 
-## User Story
+You can run the application one of two ways:
 
-```
-AS A small business owner
-I WANT to be able to write and save notes
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
-```
+1. Going to the deployed application, which can be found at [this link](https://fast-dusk-92728.herokuapp.com/).
 
+1. Once the application's files and dependencies have been installed to the local machine, you can run start the server by running <code>npm start</code>, or alternatively, <code>node server.js</code>.
+  
+   1. This should start the server on PORT 8080 of localhost.
 
-## Acceptance Criteria
+1. Once the server has been started, you venture to the application by going to the [deployed application](https://fast-dusk-92728.herokuapp.com/) or by going to http://localhost:8080 in your web browser of choice. 
 
-```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
-```
+1. When you go to the deployed application, you will be greeted with the following view:
 
+    ![Landing Page](./Assets/screenshots/landing-page.png)
 
-## Mock-Up
+1. Next, Click on the "Get Started" button. It should take you to the next page, which should look like this if there are notes:
+    ![Notes Page](./Assets/screenshots/notes-page.png)
 
-The following images show the web application's appearance and functionality: 
+1. Or it should look like this if there are no notes at the moment:
+    ![Notes Page No Notes](./Assets/screenshots/notes-page-empty.png).
+    
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
+1. By clicking on the pencil icon, you will be able to add a new note. You Will Then be able to save the note by clicking the save icon:
 
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
+    ![New Note Unsaved](./Assets/screenshots/new-note-unsaved.png)
 
+    ![New Note Saved](./Assets/screenshots/new-note-saved.png)
 
-## Getting Started
+1. By Clicking on a note on the left, you will be able to view its entirety in the active notes section to the right:
 
-The application should have a `db.json` file on the back end that will be used to store and retrieve notes using the `fs` module.
+    ![Note Active](./Assets/screenshots/note-active.png)
 
-The following HTML routes should be created:
+## Contact and Contibute
 
-* `GET /notes` should return the `notes.html` file.
+My Github is found at the following [link](https://www.github.com/thebadams)
 
-* `GET *` should return the `index.html` file.
+You can contact me via email at [bpeteradams@gmail.com](mailto:bpeteradams@gmail.com)
 
-The following API routes should be created:
+Contribute by viewing and forking the [repo](https://www.github.com/thebadams/note-taker-app.git).
 
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
+## License
 
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into `npm` packages that could do this for you).
+MIT License
 
+Copyright (c) 2021 Brian P. Adams
 
-## Bonus
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-You haven’t learned how to handle DELETE requests, but this application has that functionality in the front end. As a bonus, see if you can add the DELETE route to the application using the following guideline:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-* `DELETE /api/notes/:id` should receive a query parameter containing the id of a note to delete. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-
-
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application front end must connect to an Express.js back end.
-
-  * Application back end must store notes with unique IDs in a JSON file.
-
-  * Application must be deployed to Heroku.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
-### Deployment: 36%
 
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-
-### Application Quality: 11%
-
-* Application console is free of errors.
-
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-### Bonus: +10 Points
-
-* Application allows users to delete notes.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
